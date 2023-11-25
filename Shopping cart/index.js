@@ -17,6 +17,38 @@ class Person {
 class Cart {
 	constructor() {
 		this.products = []
+		this.total = 0
+	}
+
+	addProduct(product) {
+		this.products.push(product)
+
+		product.stock--
+		this.getTotal()
+	}
+
+	removeProduct(product) {
+		const index = this.products.indexOf(product)
+		if (index > -1) {
+			this.products.splice(index, 1)
+		}
+
+		product.stock++
+		this.getTotal()
+	}
+
+	getTotal() {
+		let total = 0
+		for (let i = 0; i < this.products.length; i++) {
+			total += this.products[i].price
+		}
+
+		this.total = total
+	}
+
+	checkout() {
+		this.products = []
+		this.total = 0
 	}
 }
 
@@ -29,11 +61,28 @@ console.log('-------------------')
 
 const nirzon = new Person('Nirzon', 'nirzon@nirzon', new Cart())
 
-nirzon.cart.products.push(phone)
-nirzon.cart.products.push(phone)
-nirzon.cart.products.push(earphone)
-nirzon.cart.products.push(laptop)
-
 console.log('Current user: \n', nirzon)
 console.log('-------------------')
+
+nirzon.cart.addProduct(phone)
+nirzon.cart.addProduct(earphone)
+nirzon.cart.addProduct(laptop)
+// nirzon.cart.getTotal()
+
 console.log('Users cart: \n', nirzon.cart)
+console.log('-------------------')
+
+nirzon.cart.removeProduct(earphone)
+console.log('**Removed earphone** \n', nirzon.cart)
+console.log('-------------------')
+
+console.log('Product list \n', phone, '\n', earphone, '\n', laptop)
+console.log('-------------------')
+
+console.log('Total: ', nirzon.cart.total)
+console.log('-------------------')
+
+console.log('Checking out.......')
+nirzon.cart.checkout()
+
+console.log('Updated cart: \n', nirzon.cart)
