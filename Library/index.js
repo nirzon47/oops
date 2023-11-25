@@ -1,18 +1,38 @@
 const library = []
 
 class Book {
+	/**
+	 * Initializes a new instance of the Book class.
+	 *
+	 * @param {string} title - The title of the book.
+	 * @param {string} author - The author of the book.
+	 * @param {boolean} [isAvailable=true] - Indicates if the book is available.
+	 */
 	constructor(title, author, isAvailable = true) {
 		this.title = title
 		this.author = author
 		this.isAvailable = isAvailable
 	}
 
+	/**
+	 * Checks the availability of the object.
+	 *
+	 * @return {boolean} The availability of the object.
+	 */
 	checkAvailability() {
 		return this.isAvailable
 	}
 }
 
 class Person {
+	/**
+	 * Constructor for creating a new instance of the class.
+	 *
+	 * @param {string} name - The name of the person.
+	 * @param {string} email - The email address of the person.
+	 * @param {string} [type='member'] - The type of person.
+	 * @return {undefined} This is a constructor, it does not return any value.
+	 */
 	constructor(name, email, type = 'member') {
 		this.name = name
 		this.email = email
@@ -22,11 +42,28 @@ class Person {
 		}
 	}
 
+	/**
+	 * Adds a borrowed book to the list of borrowed books and updates the availability status of the book.
+	 *
+	 * @param {Object} book - The book object to be added to the list of borrowed books.
+	 * @return {undefined} This function does not return a value.
+	 */
+	/**
+	 * Adds a borrowed book to the list of borrowed books and updates the availability status of the book.
+	 *
+	 * @param {Object} book - The book object to be added to the list of borrowed books.
+	 * @return {undefined} This function does not return a value.
+	 */
 	addBorrowedBook(book) {
 		this.borrowedBooks.push(book)
 		book.isAvailable = false
 	}
 
+	/**
+	 * Removes a borrowed book from the library.
+	 *
+	 * @param {Object} book - The book to be removed from the borrowedBooks list.
+	 */
 	removeBorrowedBook(book) {
 		const index = this.borrowedBooks.indexOf(book)
 		if (index > -1) {
@@ -36,6 +73,12 @@ class Person {
 		book.isAvailable = true
 	}
 
+	/**
+	 * Adds a book to the library.
+	 *
+	 * @param {type} book - the book to be added to the library
+	 * @return {type} undefined
+	 */
 	addBook(book) {
 		if (this.type === 'member') {
 			return
@@ -44,6 +87,12 @@ class Person {
 		library.push(book)
 	}
 
+	/**
+	 * Removes a book from the library.
+	 *
+	 * @param {object} book - The book to be removed.
+	 * @return {undefined} This function does not return any value.
+	 */
 	removeBook(book) {
 		if (this.type === 'member') {
 			return
