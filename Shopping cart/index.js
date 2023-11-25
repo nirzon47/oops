@@ -1,4 +1,11 @@
 class Product {
+	/**
+	 * Constructs a new instance of the class.
+	 *
+	 * @param {string} name - The name of the object.
+	 * @param {number} price - The price of the object.
+	 * @param {number} stock - The stock of the object.
+	 */
 	constructor(name, price, stock) {
 		this.name = name
 		this.price = price
@@ -7,6 +14,13 @@ class Product {
 }
 
 class Person {
+	/**
+	 * Creates a new instance of the constructor.
+	 *
+	 * @param {string} name - The name of the person.
+	 * @param {string} email - The email address of the person.
+	 * @param {array} cart - The cart items of the person.
+	 */
 	constructor(name, email, cart) {
 		this.name = name
 		this.email = email
@@ -15,11 +29,20 @@ class Person {
 }
 
 class Cart {
+	/**
+	 * Initializes a new instance of the class.
+	 */
 	constructor() {
 		this.products = []
 		this.total = 0
 	}
 
+	/**
+	 * Adds a product to the list of products and updates its stock.
+	 *
+	 * @param {Object} product - The product to be added.
+	 * @return {undefined} - This function does not return a value.
+	 */
 	addProduct(product) {
 		this.products.push(product)
 
@@ -27,6 +50,12 @@ class Cart {
 		this.getTotal()
 	}
 
+	/**
+	 * Remove a product from the list of products.
+	 *
+	 * @param {Object} product - The product to be removed.
+	 * @return {undefined} - This function does not return anything.
+	 */
 	removeProduct(product) {
 		const index = this.products.indexOf(product)
 		if (index > -1) {
@@ -37,6 +66,11 @@ class Cart {
 		this.getTotal()
 	}
 
+	/**
+	 * Calculates the total value of the products.
+	 *
+	 * @return {number} The total value of the products.
+	 */
 	getTotal() {
 		let total = 0
 		for (let i = 0; i < this.products.length; i++) {
@@ -46,6 +80,10 @@ class Cart {
 		this.total = total
 	}
 
+	/**
+	 * Initializes the checkout process by setting up an empty list of products and a total of 0.
+	 *
+	 */
 	checkout() {
 		this.products = []
 		this.total = 0
